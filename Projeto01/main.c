@@ -9,17 +9,17 @@ FILE *fClientes;
 typedef struct endereco{
     char cidade[50];
     char bairro[50];
-    int numero = 0;
+    int numero;
 }t_endereco;
 
 typedef struct{
-    int medida = 0;
-    int medida2 = 0;
-    int numeroQuartos = 0;
-    int posicaoSituada = 0;
-    int andar = 0;
-    float preco = 0;
-    int vagasGaragem = 0;
+    int medida;
+    int medida2;
+    int numeroQuartos;
+    int posicaoSituada;
+    int andar;
+    float preco;
+    int vagasGaragem;
     char descricao[200];
     t_endereco end;
 }t_apartamento;
@@ -58,7 +58,7 @@ int entrada(){
             printf("Digite o codigo correto\n\n");
             menu();
         }
-        
+
     }
     if(escolha == 4){
         return 0;
