@@ -1,20 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+FILE *fCasa;
+FILE *fApartamento;
+FILE *fTerreno;
+FILE *fClientes;
+
+void openCasa(){
+    fCasa = fopen("casa.txt", "w");
+}
+void openApartamento(){
+    fApartamento = fopen("apartamento.txt", "w");
+}
+void openTerreno(){
+    fTerreno = fopen("terreno.txt", "w");
+}
+void openClientes(){
+    fClientes = fopen("clientes.txt", "w");
+}
+
 void menssagemEntrada(){
     printf("Bem vindo ao sistema!\nPorfavor escolha uma das opções no menu digitando seu ID\n\n");
 }
 void menu(){
-    printf("-------Menu-------\n 1->Clientes\n 2->Apartamentos\n 3->Casas\n 4->Terrenos\n------------------\n");
+    printf("-------Menu-------\n 1->Apartamentos\n 2->Casas\n 3->Terrenos\n 4->Sair\n------------------\n");
 }
 void menuOpcoes(){
-    printf("------O que você deseja fazer?------\n\nn1->Atualizar\nn2->Cadastrar\nn3->Deletar\nn4->Listar\n");
+    printf("------O que você deseja fazer?------\n\nn1<-Voltar\nn2->Atualizar\nn3->Cadastrar\nn4->Deletar\nn5->Listar\nn6->Listar descricao\nn7->Listar para alugar\nn8->Listar para vender\nn9->Buscar imoveis para vender por bairro\nn10->Buscar imoveis para alugar por bairro\nn11->Listar descricao por cidade\n");
+    printf("12->Sair\n\n");
 }
-void opcoesAdcionais(){
-    printf("n5->Listar descricao\nn6->Listar para alugar\nn7->Listar para vender\n");
-}
-
-int main(int argc, char** argv) {
+int entrada(){
     menssagemEntrada();
     menu();
     int escolha = 0;
@@ -27,11 +42,39 @@ int main(int argc, char** argv) {
         }
         
     }
-
-        menuOpcoes();
-    if(escolha != 1){
-        opcoesAdcionais();
+    if(escolha == 4){
+        return 0;
     }
-        puts("");
+    return 1;
+}
+int escolha1(){
+    int escolha2 = 0;
+    menuOpcoes();
+    scanf("%i", &escolha2);
+    while(escolha2 < 1 || escolha2 > 12){
+        printf("Digite o codigo correto ----- YOU BURRO MAN -----\n");
+        menuOpcoes();
+        scanf("%i", &escolha2);
+    }
+    puts("\n");
+    return escolha2;
+}
+
+int main(int argc, char** argv) {
+    while(1){
+        int vInicio = entrada();
+        if(vInicio == 0){
+            return 0;
+        }
+        while(1){
+            int vE1 = escolha1();
+            if(vE1 == 12){
+                return 0;
+            }
+            if(vE1 == 1){
+                break;
+            }
+        }
+    }
     return 0;
 }
