@@ -6,6 +6,24 @@ FILE *fApartamento;
 FILE *fTerreno;
 FILE *fClientes;
 
+typedef struct endereco{
+    char cidade[50];
+    char bairro[50];
+    int numero = 0;
+}t_endereco;
+
+typedef struct{
+    int medida = 0;
+    int medida2 = 0;
+    int numeroQuartos = 0;
+    int posicaoSituada = 0;
+    int andar = 0;
+    float preco = 0;
+    int vagasGaragem = 0;
+    char descricao[200];
+    t_endereco end;
+}t_apartamento;
+
 void openCasa(){
     fCasa = fopen("casa.txt", "w");
 }
@@ -58,6 +76,9 @@ int escolha1(){
     }
     puts("\n");
     return escolha2;
+}
+int cadastrarApartamento(){
+    t_apartamento apartament[50];
 }
 
 int main(int argc, char** argv) {
